@@ -2,7 +2,8 @@
 !
 !     This program reads a 3x3 matrix from a user-provided input file. After the
 !     file is opened and read, it is closed and then printed.
-!
+!      
+!     Abigail Gyamfi, CHEM 225 Spring 2023 
 !
       implicit none
       integer,parameter::inFileUnitA=10
@@ -43,18 +44,23 @@
 !
       implicit none
       real,dimension(3,3),intent(in)::matrix
+      real,dimension(3,3) ::StdOut
       integer::i
 !
 !     Format statements.
 !
  1000 format(3(2x,f5.1))
 !
-!     Do the printing job.
+!     Do the printing job; in this code, printing of the 3*3 matrix.
 !
       write(*,*)' Printing Matrix'
+      do i = 1,3
+              StdOut = matrix
+            endDo
+      write(*,*)
 !
-      ADD CODE HERE
-!
+      write(*,1000)transpose(matrix)
+      write(*,*)
 !
       return
       End Subroutine PrintMatrix3x3
