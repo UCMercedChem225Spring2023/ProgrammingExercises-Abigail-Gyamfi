@@ -50,15 +50,13 @@
 !
  1000 format(3(2x,f5.1))
 !
-!     Do the printing job; in this code, printing of the 3*3 matrix.
+!     Do the printing job; in this code, printing of the 3*3 matrix. Code written below
 !
       write(*,*)' Printing Matrix'
       do i = 1,3
             endDo
-      write(*,*)
 !
       write(*,1000) transpose(matrix)
-      write(*,*)
 !
       return
       End Subroutine PrintMatrix3x3
