@@ -5,6 +5,7 @@
 !     numbers for two canonical PIB eigenstates.
 !
 !     This program is written in atomic units.
+!     Abigail Gyamfi, CHEM 225 Spring 2023
 !
 !
 !     Variable Declarations
@@ -22,6 +23,7 @@
  9000 format(1x,'Expected 4 command line arguments, but found ',i2,'.')
 !
 !
+!     NB: For KE: the 4 input arguments/parameters are m, l, n1, and n2.
 !     Read in m, l, n1, and n2 from the command line.
 !
       NCmdLineArgs = command_argument_count()
@@ -50,6 +52,7 @@
   999 continue
       end program prgm_02_01
 
+!     The function should be a Real Function named PIB_1D_T_Element
 
       real function PIB_1D_T_Element(l,n1,n2)
 !
@@ -69,12 +72,12 @@
 !     these two different cases.
 !
       if(n1.eq.n2) then
-
-        ***WRITE CODE HERE***
+!     NB: when n1 = n2
+      PIB_1D_T_Element = (n1**2)/(2*l**2)
 
       else
-
-        ***WRITE CODE HERE***
+!     NB: when n1\=n2
+      PIB_1D_T_Element = 0
 
       endIf
 !
