@@ -5,6 +5,7 @@
 !     numbers for two canonical PIB eigenstates.
 !
 !     This program is written in atomic units.
+!     Abigail Gyamfi, CHEM 225 Spring 2023
 !
 !
 !     Variable Declarations
@@ -22,6 +23,7 @@
  9000 format(1x,'Expected 4 command line arguments, but found ',i2,'.')
 !
 !
+!     NB: For KE: the 4 input arguments/parameters are m, l, n1, and n2.
 !     Read in m, l, n1, and n2 from the command line.
 !
       NCmdLineArgs = command_argument_count()
@@ -42,7 +44,7 @@
 !     Given the input parameters, evaluate the kinetic energy integral between
 !     particle-in-a-box eigenfunctions n1 and n2.
 !
-      tMatrixElement = PIB_1D_T_Element(l,n1,n2)
+      tMatrixElement = PIB_1D_T_Element(m,l,n1,n2)
       write(*,2000) n1,n2,tMatrixElement
 !
 !     The end of the job...
@@ -50,8 +52,9 @@
   999 continue
       end program prgm_02_01
 
+!     The function should be a Real Function named PIB_1D_T_Element
 
-      real function PIB_1D_T_Element(l,n1,n2)
+      real function PIB_1D_T_Element(m,l,n1,n2)
 !
 !     This function evaluates the kinetic energy matrix element < n1 | T | n2 >,
 !     where n1 and n2 are particle-in-a-box eigenstate labels and T is the
@@ -60,8 +63,9 @@
 !
 !     Variable Declarations
       implicit none
-      real,intent(in)::l
+      real,intent(in)::l,m
       integer,intent(in)::n1,n2
+      real(kind=8), parameter :: pi=4.0*aTAN(1.0)
       real::prefactor
 !
 !     The case where n1=n2 is different than n1\=n2. For this reason, we use an
@@ -69,12 +73,12 @@
 !     these two different cases.
 !
       if(n1.eq.n2) then
-
-        ***WRITE CODE HERE***
+!     NB: when n1 = n2
+      PIB_1D_T_Element = (n1**2*pi**2)/(2*l**2*m)
 
       else
-
-        ***WRITE CODE HERE***
+!     NB: when n1\=n2
+      PIB_1D_T_Element = 0
 
       endIf
 !
